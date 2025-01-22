@@ -16,10 +16,12 @@ const ToggleButton = styled.button`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  margin-left: 0.75rem;
   padding: 0.5rem;
   cursor: pointer;
   text-decoration: none;
+`;
+
+const ButtonSpan = styled.span`
   &:hover {
     text-decoration: underline;
   }
@@ -47,7 +49,7 @@ const SearchInput = styled.input`
   border: none;
   outline: none;
   background-color: ${(props) =>
-    props.theme === "dark" ? "#0f1010" : "#ffffff"};
+    props.theme === "dark" ? "#27272a" : "#ffffff"};
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -132,7 +134,7 @@ const LanguageSelector = ({
     >
       <ToggleButton onClick={() => setIsOpenSelector(!isOpenSelector)}>
         <span>🌐</span>
-        <span>{buttonLabel}</span>
+        <ButtonSpan>{buttonLabel}</ButtonSpan>
       </ToggleButton>
       {isOpenSelector && (
         <DropdownMenu theme={theme}>

@@ -100,7 +100,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 ### Steps to Contribute
 
-1. Fork the repository.
+1. Fork the repository: [GitHub repository](https://github.com/JamiuShaibu/react-language-selector-lite)
 2. Create a new branch: `git checkout -b feature-branch-name`.
 3. Make your changes and commit: `git commit -m 'Add some feature'`.
 4. Push to the branch: `git push origin feature-branch-name`.
@@ -120,4 +120,20 @@ If you encounter any issues or have suggestions, feel free to open an issue on G
 
 ---
 
-Feel free to adjust or expand on any sections as needed! Let me know if there's anything else I can help with. 😊🚀📘
+## Thank You
+
+Thank you for using **react-language-selector-lite**! Your support is greatly appreciated.
+
+---
+
+## Buy Me a Coffee
+
+If you found this package useful, please consider buying me a coffee.
+
+<a href="https://www.buymeacoffee.com/jamiushaib5" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+---
+
+### Author
+
+- **<NAME>** - [Jamiu Shaibu](https://github.com/JamiuShaibu)
