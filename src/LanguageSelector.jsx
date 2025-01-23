@@ -202,6 +202,7 @@ LanguageSelector.propTypes = {
   placeholder: propTypes.string,
   className: propTypes.string,
   theme: propTypes.string,
+  useDefaultToggleButton: propTypes.bool,
 };
 
 export default LanguageSelector;
