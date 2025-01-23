@@ -55,13 +55,20 @@ const App = () => {
 export default App;
 ```
 
+## Preview in Action:
+
+<div style="display: flex; align-items: center; gap: 10px;">
+  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="PNG Example" width="300" />
+  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite.gif" alt="GIF Example" width="300" />
+</div>
+
 ### Props
 
 | Prop Name       | Type                           | Default Value        | Description                                                 |
 |-----------------|--------------------------------|----------------------|-------------------------------------------------------------|
 | `onSelect`      | `(language: any) => void`      | **Required**         | Callback function triggered when a language is selected.    |
 | `includeDetails`| `boolean`                      | `false`              | Whether to include detailed language info in `onSelect`.    |
-| `geoCoverage`   | `string`: `"local"`/`"international"`/ `"both"`                       | `"both"`             | Display local names or international names of languages.    |
+| `geoCoverage`   | `string`: `"local"`/ `"international"`/ `"both"`       | `"both"`             | Display local names or international names of languages.    |
 | `enableSearch`  | `boolean`                      | `true`               | Enable search functionality.                                |
 | `options`       | `string[]`                     | `[]`                 | Array of language codes to limit available options.         |
 | `sortOptions`   | `boolean`                      | `true`               | Whether to sort the list of languages alphabetically.       |
