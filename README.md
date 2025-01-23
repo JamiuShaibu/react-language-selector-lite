@@ -1,6 +1,6 @@
 # react-language-selector-lite
 
-**react-language-selector-lite** is a lightweight and customizable React component for selecting languages with support for search, themes (light and dark), and flexible configurations. This package is built using styled-components for seamless integration into any React project.
+**react-language-selector-lite** is a lightweight and customizable React component for selecting languages with support for search, themes (light and dark), and flexible configurations. This package is built using styled-components for seamless integration into any React project🚀.
 
 ---
 
@@ -61,13 +61,14 @@ export default App;
 |-----------------|--------------------------------|----------------------|-------------------------------------------------------------|
 | `onSelect`      | `(language: any) => void`      | **Required**         | Callback function triggered when a language is selected.    |
 | `includeDetails`| `boolean`                      | `false`              | Whether to include detailed language info in `onSelect`.    |
-| `geoCoverage`   | `string`                       | `"both"`             | Display local names or international names of languages.    |
+| `geoCoverage`   | `string`: `"local"`/`"international"`/ `"both"`                       | `"both"`             | Display local names or international names of languages.    |
 | `enableSearch`  | `boolean`                      | `true`               | Enable search functionality.                                |
 | `options`       | `string[]`                     | `[]`                 | Array of language codes to limit available options.         |
 | `sortOptions`   | `boolean`                      | `true`               | Whether to sort the list of languages alphabetically.       |
 | `buttonLabel`   | `string`                       | `"Select language"`  | Label for the toggle button.                                |
 | `placeholder`   | `string`                       | `"Search language..."` | Placeholder text for the search input.                      |
 | `className`     | `string`                       | `""`                 | Additional class names for custom styling.                  |
+| `useDefaultToggleButton`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden, and the select container will always be visible, allowing users to provide their own custom toggle button                                   |
 | `theme`         | `"light" / "dark"`             | `"light"`            | Theme of the component.                                     |
 
 ---

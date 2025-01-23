@@ -95,6 +95,7 @@ const LanguageSelector = ({
   placeholder = "Search language...",
   className = "",
   theme = "light",
+  useDefaultToggleButton = true,
 }) => {
   let allLanguages = langs.all();
   if (options.length > 0) {
@@ -102,7 +103,10 @@ const LanguageSelector = ({
     allLanguages = options.map((code) => langs.where("1", code.toLowerCase()));
   }
 
-  const [isOpenSelector, setIsOpenSelector] = useState(false);
+  const [isOpenSelector, setIsOpenSelector] = useState(
+    useDefaultToggleButton ? false : true
+  );
+
   const [searchValue, setSearchValue] = useState("");
 
   const menuRef = useRef(null);
@@ -110,7 +114,7 @@ const LanguageSelector = ({
 
   const handleLanguageChange = (value) => {
     includeDetails ? onSelect(value) : onSelect(value[1]);
-    setIsOpenSelector(!isOpenSelector);
+    useDefaultToggleButton && setIsOpenSelector(!isOpenSelector);
   };
 
   const handleSearch = (e) => {
@@ -132,10 +136,12 @@ const LanguageSelector = ({
       geoCoverage={geoCoverage}
       theme={theme}
     >
-      <ToggleButton onClick={() => setIsOpenSelector(!isOpenSelector)}>
-        <span>🌐</span>
-        <ButtonSpan>{buttonLabel}</ButtonSpan>
-      </ToggleButton>
+      {useDefaultToggleButton && (
+        <ToggleButton onClick={() => setIsOpenSelector(!isOpenSelector)}>
+          <span>🌐</span>
+          <ButtonSpan>{buttonLabel}</ButtonSpan>
+        </ToggleButton>
+      )}
       {isOpenSelector && (
         <DropdownMenu theme={theme}>
           {enableSearch && (
