@@ -8,7 +8,9 @@ const LanguageSelectorWrapper = styled.div`
   position: relative;
   width: 100%;
   ${(props) =>
-    props.geoCoverage === "both" ? "max-width: 320px;" : "max-width: 256px;"}
+    props.geoCoverage === "both"
+      ? "min-width: 11rem; max-width: 32rem;"
+      : "min-width: 6rem; max-width: 25.6rem;"}
   text-nowrap: nowrap;
 `;
 
