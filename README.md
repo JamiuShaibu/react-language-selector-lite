@@ -62,9 +62,63 @@ export default App;
 ## Preview in Action:
 
 <div style="display: flex; align-items: center; gap: 10px;">
-  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="PNG Example" width="300" />
-  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite.gif" alt="GIF Example" width="300" />
+  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="Language Selector Example" width="300" />
+  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite.gif" alt="Language Selector Gif Example" width="300" />
 </div>
+
+### Using custom toggle button
+
+You can use your own custom toggle button by passing `useDefaultToggleButton` prop as `false` and rendering the select container yourself. Here's an example:
+
+```jsx
+import React from 'react';
+import { RiTranslateAi2 } from "react-icons/ri";
+import LanguageSelector from 'react-language-selector-lite';
+
+const App = () => {
+  const [isOpenLanguageSelector, setIsOpenLanguageSelector] = useState(false);
+  const handleLanguageSelectorToggle = () => {
+    setIsOpenLanguageSelector(!isOpenLanguageSelector);
+  };
+
+  const handleLanguageSelect = (language) => {
+    console.log('Selected language:', language);
+    // {1: 'es', 2: 'spa', 3: 'spa', name: 'Spanish', local: 'Español', 2T: 'spa', 2B: 'spa'}
+    setIsOpenLanguageSelector(false);
+  };
+
+  return (
+    <div className="relative w-full">
+      <button onClick={handleLanguageSelectorToggle}>
+        <RiTranslateAi2 className="size-6" />
+      </button>
+      {isOpenLanguageSelector && (
+        <LanguageSelector
+          onSelect={(value) => handleLanguageSelect(value)}
+          theme="dark"
+          includeDetails={true}
+          useDefaultToggleButton={false}
+        />
+      )}
+    </div>
+  );
+};
+
+export default App;
+```
+
+<img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-darkImg.png" alt="language selector dark theme" width="300" />
+
+### Limiting Language Options
+
+You can limit the available options by passing an array of language codes to the `options` prop:
+
+```jsx
+<LanguageSelector
+  onSelect={handleLanguageSelect}
+  options={['en', 'es', 'fr']}
+/>
+```
 
 ### Props
 
