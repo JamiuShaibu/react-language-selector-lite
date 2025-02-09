@@ -43,6 +43,10 @@ import LanguageSelector from 'react-language-selector-lite';
 const App = () => {
   const handleLanguageSelect = (language) => {
     console.log('Selected language:', language);
+    // Will return the code of the selected language. e.g. 'es'
+
+    // You can also access the language details by passing `includeDetails` prop as true. e.g.
+    // {1: 'es', 2: 'spa', 3: 'spa', name: 'Spanish', local: 'Español', 2T: 'spa', 2B: 'spa'}
   };
 
   return (
@@ -74,6 +78,7 @@ export default App;
 | `sortOptions`   | `boolean`                      | `true`               | Whether to sort the list of languages alphabetically.       |
 | `buttonLabel`   | `string`                       | `"Select language"`  | Label for the toggle button.                                |
 | `placeholder`   | `string`                       | `"Search language..."` | Placeholder text for the search input.                      |
+| `notFoundLabel`   | `string`                       | `"Language not found"` | Label for the not found message. When set to an empty string `""` the message will not show up.                              |
 | `className`     | `string`                       | `""`                 | Additional class names for custom styling.                  |
 | `useDefaultToggleButton`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden, and the select container will always be visible, allowing users to provide their own custom toggle button                                   |
 | `theme`         | `"light" / "dark"`             | `"light"`            | Theme of the component.                                     |

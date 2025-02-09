@@ -95,6 +95,7 @@ const LanguageSelector = ({
   sortOptions = true,
   buttonLabel = "Select language",
   placeholder = "Search language...",
+  notFoundLabel = "Language not found",
   className = "",
   theme = "light",
   useDefaultToggleButton = true,
@@ -183,7 +184,7 @@ const LanguageSelector = ({
                 </LanguageItem>
               ))
             ) : (
-              <NoLanguageFound>Language not found</NoLanguageFound>
+              <NoLanguageFound>{notFoundLabel}</NoLanguageFound>
             )}
           </LanguageList>
         </DropdownMenu>
@@ -201,6 +202,7 @@ LanguageSelector.propTypes = {
   geoCoverage: propTypes.string,
   reverseNames: propTypes.bool,
   buttonLabel: propTypes.string,
+  notFoundLabel: propTypes.string,
   placeholder: propTypes.string,
   className: propTypes.string,
   theme: propTypes.string,
