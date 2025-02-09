@@ -83,7 +83,7 @@ const App = () => {
 
   const handleLanguageSelect = (language) => {
     console.log('Selected language:', language);
-    // {1: 'es', 2: 'spa', 3: 'spa', name: 'Spanish', local: 'Español', 2T: 'spa', 2B: 'spa'}
+    // {1: 'de', 2: 'deu', 3: 'deu', name: 'German', local: 'Deutsch', 2T: 'deu', 2B: 'ger'}
     setIsOpenLanguageSelector(false);
   };
 
@@ -127,6 +127,7 @@ You can limit the available options by passing an array of language codes to the
 | `onSelect`      | `(language: any) => void`      | **Required**         | Callback function triggered when a language is selected.    |
 | `includeDetails`| `boolean`                      | `false`              | Whether to include detailed language info in `onSelect`.    |
 | `geoCoverage`   | `string`: `"local"`/ `"international"`/ `"both"`       | `"both"`             | Display local names or international names of languages.    |
+| `reverseNames`    | `boolean`                      | `false`              | Reverse the order of the language names when `geoCoverage` is set to `both`.                     |
 | `enableSearch`  | `boolean`                      | `true`               | Enable search functionality.                                |
 | `options`       | `string[]`                     | `[]`                 | Array of language codes to limit available options.         |
 | `sortOptions`   | `boolean`                      | `true`               | Whether to sort the list of languages alphabetically.       |

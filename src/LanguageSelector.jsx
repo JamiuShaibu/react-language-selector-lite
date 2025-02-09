@@ -99,6 +99,7 @@ const LanguageSelector = ({
   className = "",
   theme = "light",
   useDefaultToggleButton = true,
+  ...props
 }) => {
   let allLanguages = langs.all();
   if (options.length > 0) {
@@ -136,8 +137,8 @@ const LanguageSelector = ({
     <LanguageSelectorWrapper
       ref={menuRef}
       className={className}
-      geoCoverage={geoCoverage}
       theme={theme}
+      {...props}
     >
       {useDefaultToggleButton && (
         <ToggleButton onClick={() => setIsOpenSelector(!isOpenSelector)}>

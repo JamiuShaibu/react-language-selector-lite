@@ -1,14 +1,16 @@
 {
   "name": "react-language-selector-lite",
-  "version": "1.1.50",
+  "version": "1.1.7",
   "description": "A lightweight language selector for React applications",
   "main": "dist/LanguageSelector.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "build": "babel src -d dist"
   },
   "files": [
     "dist",
-    "LICENSE"
+    "LICENSE",
+    "src/index.d.ts"
   ],
   "license": "MIT",
   "author": "Jamiu Shaibu",
