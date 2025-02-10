@@ -1,6 +1,6 @@
 # react-language-selector-lite
 
-**react-language-selector-lite** is a lightweight and customizable React component for selecting languages with support for search, themes (light and dark), and flexible configurations. This package is built using styled-components for seamless integration into any React project🚀.
+**react-language-selector-lite** is a lightweight and customizable React component for selecting languages, featuring ISO 639 macrolanguage support, and TypeScript compatibility. It offers search functionality, themes (light and dark), and flexible configurations. This package is built using styled-components for seamless integration into any React project. 🚀
 
 ---
 
