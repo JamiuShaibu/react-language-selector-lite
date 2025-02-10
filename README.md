@@ -6,13 +6,21 @@
 
 ## Features
 
-- Select from a comprehensive list of languages.
+- Select from a comprehensive list of over 184 languages.
 - Search functionality to quickly find languages.
 - Supports light and dark themes.
 - Fully customizable labels and placeholders.
 - Option to include detailed language information.
 - Flexible sorting and filtering of languages.
 - Licensed under MIT.
+
+---
+
+### About ISO 639 Macrolanguage
+
+**ISO 639** is a set of international standards that lists short codes for language names. The ISO 639-1 and ISO 639-2 codes are primarily used, and these codes cover the majority of languages in the world. This package uses ISO 639 macrolanguages to ensure comprehensive and accurate representation of languages.
+
+For more information about ISO 639 macrolanguage, visit the [Wikipedia page](https://en.wikipedia.org/wiki/ISO_639_macrolanguage).
 
 ---
 
@@ -51,7 +59,7 @@ const App = () => {
 
   return (
     <div>
-      <LanguageSelector onSelect={handleLanguageSelect} theme="dark" />
+      <LanguageSelector onSelect={handleLanguageSelect} />
     </div>
   );
 };
@@ -59,7 +67,7 @@ const App = () => {
 export default App;
 ```
 
-## Preview in Action:
+### Preview in Action:
 
 <div style="display: flex; align-items: center; gap: 10px;">
   <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="Language Selector Example" width="300" />
@@ -158,7 +166,7 @@ To use the dark theme, simply set the `theme` prop to `"dark"`:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE) by [Jamiu Shaibu](https://github.com/JamiuShaibu)
 
 ---
 
@@ -182,19 +190,19 @@ If you encounter any issues or have suggestions, feel free to open an issue on G
 
 ---
 
-## Acknowledgments
+### Acknowledgments
 
 - [langs](https://www.npmjs.com/package/langs): Used for fetching language details.
 
 ---
 
-## Thank You
+### Thank You
 
 Thank you for using **react-language-selector-lite**! Your support is greatly appreciated.
 
 ---
 
-## Buy Me a Coffee
+### Buy Me a Coffee
 
 If you found this package useful, please consider buying me a coffee.
 
