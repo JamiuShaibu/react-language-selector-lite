@@ -106,6 +106,7 @@ const LanguageSelector = ({
   theme = "light",
   defaultToggleBtn = true,
   buttonRef = null,
+  display = "onClick",
   ...props
 }) => {
   let allLanguages = langs.all();
@@ -146,13 +147,37 @@ const LanguageSelector = ({
 
   useEffect(() => {
     const buttonElement = buttonRef?.current;
-    if (buttonElement) {
-      buttonElement.addEventListener("click", toggleSelector);
-      return () => {
-        buttonElement.removeEventListener("click", toggleSelector);
-      };
-    }
-  }, [buttonRef, toggleSelector]);
+    const handleMouseEnter = () => setIsOpenSelector(true);
+    const handleMouseLeave = (e) => {
+      if (!menuRef.current.contains(e.relatedTarget)) {
+        setIsOpenSelector(false);
+      }
+    };
+
+    const addEventListeners = () => {
+      // default display is onClick
+      if (lowerCase(display) === "onhover") {
+        buttonElement?.addEventListener("mouseenter", handleMouseEnter);
+        buttonElement?.addEventListener("mouseleave", handleMouseLeave);
+        menuRef.current?.addEventListener("mouseleave", handleMouseLeave);
+      } else {
+        buttonElement?.addEventListener("click", toggleSelector);
+      }
+    };
+
+    const removeEventListeners = () => {
+      if (lowerCase(display) === "onhover") {
+        buttonElement?.removeEventListener("mouseenter", handleMouseEnter);
+        buttonElement?.removeEventListener("mouseleave", handleMouseLeave);
+        menuRef.current?.removeEventListener("mouseleave", handleMouseLeave);
+      } else {
+        buttonElement?.removeEventListener("click", toggleSelector);
+      }
+    };
+
+    addEventListeners();
+    return () => removeEventListeners();
+  }, [buttonRef, display, toggleSelector]);
 
   return (
     <LanguageSelectorWrapper
@@ -221,15 +246,16 @@ LanguageSelector.propTypes = {
   enableSearch: propTypes.bool,
   options: propTypes.arrayOf(propTypes.string),
   sortOptions: propTypes.bool,
-  geoCoverage: propTypes.string,
+  geoCoverage: propTypes.oneOf(["local", "international", "both"]),
   reverseNames: propTypes.bool,
   buttonLabel: propTypes.string,
   notFoundLabel: propTypes.string,
   placeholder: propTypes.string,
   className: propTypes.string,
-  theme: propTypes.string,
+  theme: propTypes.oneOf(["light", "dark"]),
   defaultToggleBtn: propTypes.bool,
   buttonRef: propTypes.shape({ current: propTypes.instanceOf(Element) }),
+  display: propTypes.oneOf(["onClick", "onHover"]),
 };
 
 export default LanguageSelector;

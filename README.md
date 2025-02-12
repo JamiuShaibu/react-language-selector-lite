@@ -123,6 +123,10 @@ You can limit the available options by passing an array of language codes to the
 />
 ```
 
+### NPM official package
+
+Visit the [NPM official package page](https://www.npmjs.com/package/react-language-selector-lite?activeTab=readme) for more information.
+
 ### Props
 
 | Prop Name       | Type                           | Default Value        | Description                                                 |
@@ -140,6 +144,7 @@ You can limit the available options by passing an array of language codes to the
 | `className`     | `string`                       | `""`                 | Additional class names for custom styling.                  |
 | `defaultToggleBtn`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden and the user can provide their own custom toggle button.                                    |
 | `buttonRef`     | `React.RefObject< HTMLButtonElement>` | `null`            | A reference to a custom button that toggles the visibility of the language selector container.                                    |
+| `display`       | `string`:  `"onClick"` / `"onHover"` | `"onClick"` | Display the language selector on **click** or **hover** of the custom toggle button. |
 | `theme`         | `"light" / "dark"`             | `"light"`            | Theme of the component.                                     |
 
 ---
