@@ -76,38 +76,33 @@ export default App;
 
 ### Using custom toggle button
 
-You can use your own custom toggle button by passing `useDefaultToggleButton` prop as `false` and rendering the select container yourself. Here's an example:
+You can use your own custom toggle button by passing `defaultToggleBtn` prop as `false` and rendering the select container with reference to your custom button. Here's an example: **Easy peasy!**
 
 ```jsx
-import React from 'react';
+import React, { useRef } from 'react';
 import { RiTranslateAi2 } from "react-icons/ri";
 import LanguageSelector from 'react-language-selector-lite';
 
 const App = () => {
-  const [isOpenLanguageSelector, setIsOpenLanguageSelector] = useState(false);
-  const handleLanguageSelectorToggle = () => {
-    setIsOpenLanguageSelector(!isOpenLanguageSelector);
-  };
+  const customButtonRef = useRef(null);
 
   const handleLanguageSelect = (language) => {
     console.log('Selected language:', language);
     // {1: 'de', 2: 'deu', 3: 'deu', name: 'German', local: 'Deutsch', 2T: 'deu', 2B: 'ger'}
-    setIsOpenLanguageSelector(false);
   };
 
   return (
     <div className="relative w-full">
-      <button onClick={handleLanguageSelectorToggle}>
+      <button ref={customButtonRef}>
         <RiTranslateAi2 className="size-6" />
       </button>
-      {isOpenLanguageSelector && (
-        <LanguageSelector
-          onSelect={(value) => handleLanguageSelect(value)}
-          theme="dark"
-          includeDetails={true}
-          useDefaultToggleButton={false}
-        />
-      )}
+      <LanguageSelector
+        onSelect={(value) => handleLanguageSelect(value)}
+        theme="dark"
+        includeDetails={true}
+        defaultToggleBtn={false}
+        buttonRef={customButtonRef}
+      />
     </div>
   );
 };
@@ -143,7 +138,8 @@ You can limit the available options by passing an array of language codes to the
 | `placeholder`   | `string`                       | `"Search language..."` | Placeholder text for the search input.                      |
 | `notFoundLabel`   | `string`                       | `"Language not found"` | Label for the not found message. When set to an empty string `""` the message will not show up.                              |
 | `className`     | `string`                       | `""`                 | Additional class names for custom styling.                  |
-| `useDefaultToggleButton`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden, and the select container will always be visible, allowing users to provide their own custom toggle button                                   |
+| `defaultToggleBtn`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden and the user can provide their own custom toggle button.                                    |
+| `buttonRef`     | `React.RefObject< HTMLButtonElement>` | `null`            | A reference to a custom button that toggles the visibility of the language selector container.                                    |
 | `theme`         | `"light" / "dark"`             | `"light"`            | Theme of the component.                                     |
 
 ---

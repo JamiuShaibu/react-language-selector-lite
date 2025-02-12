@@ -1,5 +1,11 @@
 import * as langs from "langs";
-import React, { useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import useDropdownClickOutside from "./hooks/useDropdownClickOutside.js";
 import propTypes from "prop-types";
 import styled from "styled-components";
@@ -98,7 +104,8 @@ const LanguageSelector = ({
   notFoundLabel = "Language not found",
   className = "",
   theme = "light",
-  useDefaultToggleButton = true,
+  defaultToggleBtn = true,
+  buttonRef = null,
   ...props
 }) => {
   let allLanguages = langs.all();
@@ -108,7 +115,7 @@ const LanguageSelector = ({
   }
 
   const [isOpenSelector, setIsOpenSelector] = useState(
-    useDefaultToggleButton ? false : true
+    defaultToggleBtn ? false : true
   );
 
   const [searchValue, setSearchValue] = useState("");
@@ -118,7 +125,7 @@ const LanguageSelector = ({
 
   const handleLanguageChange = (value) => {
     includeDetails ? onSelect(value) : onSelect(value[1]);
-    useDefaultToggleButton && setIsOpenSelector(!isOpenSelector);
+    setIsOpenSelector(!isOpenSelector);
   };
 
   const handleSearch = (e) => {
@@ -133,6 +140,20 @@ const LanguageSelector = ({
       lowerCase(language.name).includes(lowerCase(searchValue))
   );
 
+  const toggleSelector = useCallback(() => {
+    setIsOpenSelector((prev) => !prev);
+  }, []);
+
+  useEffect(() => {
+    const buttonElement = buttonRef?.current;
+    if (buttonElement) {
+      buttonElement.addEventListener("click", toggleSelector);
+      return () => {
+        buttonElement.removeEventListener("click", toggleSelector);
+      };
+    }
+  }, [buttonRef, toggleSelector]);
+
   return (
     <LanguageSelectorWrapper
       ref={menuRef}
@@ -140,7 +161,7 @@ const LanguageSelector = ({
       theme={theme}
       {...props}
     >
-      {useDefaultToggleButton && (
+      {defaultToggleBtn && (
         <ToggleButton onClick={() => setIsOpenSelector(!isOpenSelector)}>
           <span>🌐</span>
           <ButtonSpan>{buttonLabel}</ButtonSpan>
@@ -207,7 +228,8 @@ LanguageSelector.propTypes = {
   placeholder: propTypes.string,
   className: propTypes.string,
   theme: propTypes.string,
-  useDefaultToggleButton: propTypes.bool,
+  defaultToggleBtn: propTypes.bool,
+  buttonRef: propTypes.shape({ current: propTypes.instanceOf(Element) }),
 };
 
 export default LanguageSelector;

@@ -16,7 +16,8 @@ declare module 'react-language-selector-lite' {
     placeholder?: string;
     className?: string;
     theme?: 'light' | 'dark';
-    useDefaultToggleButton?: boolean;
+    defaultToggleBtn?: boolean;
+    buttonRef?: React.RefObject<HTMLButtonElement>;
   }
 
   const LanguageSelector: React.FC<LanguageSelectorProps>;
