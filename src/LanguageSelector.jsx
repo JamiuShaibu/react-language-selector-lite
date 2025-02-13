@@ -106,7 +106,7 @@ const LanguageSelector = ({
   theme = "light",
   defaultToggleBtn = true,
   buttonRef = null,
-  display = "onClick",
+  render = "onClick",
   ...props
 }) => {
   let allLanguages = langs.all();
@@ -145,8 +145,12 @@ const LanguageSelector = ({
     setIsOpenSelector((prev) => !prev);
   }, []);
 
+  const defaultButtonRef = useRef(null);
+  const activeButtonRef =
+    !defaultToggleBtn && buttonRef ? buttonRef : defaultButtonRef;
+
   useEffect(() => {
-    const buttonElement = buttonRef?.current;
+    const buttonElement = activeButtonRef.current;
     const handleMouseEnter = () => setIsOpenSelector(true);
     const handleMouseLeave = (e) => {
       if (!menuRef.current.contains(e.relatedTarget)) {
@@ -155,8 +159,8 @@ const LanguageSelector = ({
     };
 
     const addEventListeners = () => {
-      // default display is onClick
-      if (lowerCase(display) === "onhover") {
+      // default render is onClick
+      if (lowerCase(render) === "onhover") {
         buttonElement?.addEventListener("mouseenter", handleMouseEnter);
         buttonElement?.addEventListener("mouseleave", handleMouseLeave);
         menuRef.current?.addEventListener("mouseleave", handleMouseLeave);
@@ -166,7 +170,7 @@ const LanguageSelector = ({
     };
 
     const removeEventListeners = () => {
-      if (lowerCase(display) === "onhover") {
+      if (lowerCase(render) === "onhover") {
         buttonElement?.removeEventListener("mouseenter", handleMouseEnter);
         buttonElement?.removeEventListener("mouseleave", handleMouseLeave);
         menuRef.current?.removeEventListener("mouseleave", handleMouseLeave);
@@ -177,7 +181,7 @@ const LanguageSelector = ({
 
     addEventListeners();
     return () => removeEventListeners();
-  }, [buttonRef, display, toggleSelector]);
+  }, [activeButtonRef, render, toggleSelector]);
 
   return (
     <LanguageSelectorWrapper
@@ -187,7 +191,7 @@ const LanguageSelector = ({
       {...props}
     >
       {defaultToggleBtn && (
-        <ToggleButton onClick={() => setIsOpenSelector(!isOpenSelector)}>
+        <ToggleButton ref={defaultButtonRef}>
           <span>🌐</span>
           <ButtonSpan>{buttonLabel}</ButtonSpan>
         </ToggleButton>
@@ -255,7 +259,7 @@ LanguageSelector.propTypes = {
   theme: propTypes.oneOf(["light", "dark"]),
   defaultToggleBtn: propTypes.bool,
   buttonRef: propTypes.shape({ current: propTypes.instanceOf(Element) }),
-  display: propTypes.oneOf(["onClick", "onHover"]),
+  render: propTypes.oneOf(["onClick", "onHover"]),
 };
 
 export default LanguageSelector;
