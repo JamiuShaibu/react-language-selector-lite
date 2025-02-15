@@ -152,11 +152,15 @@ const LanguageSelector = ({
   useEffect(() => {
     const event = lowerCase(render);
     const buttonElement = activeButtonRef.current;
+
+    // Detect if the device supports hover
+    const canHover = window.matchMedia("(hover: hover)").matches;
     // Detect if the device supports touch
     const isTouchDevice =
       "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
     const renderEvent =
-      event === "onhover" && isTouchDevice ? "onclick" : event;
+      event === "onhover" && (isTouchDevice || !canHover) ? "onclick" : event;
 
     const handleMouseEnter = () => setIsOpenSelector(true);
     const handleMouseLeave = (e) => {
