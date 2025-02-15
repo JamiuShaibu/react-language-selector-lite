@@ -150,7 +150,14 @@ const LanguageSelector = ({
     !defaultToggleBtn && buttonRef ? buttonRef : defaultButtonRef;
 
   useEffect(() => {
+    const event = lowerCase(render);
     const buttonElement = activeButtonRef.current;
+    // Detect if the device supports touch
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const renderEvent =
+      event === "onhover" && isTouchDevice ? "onclick" : event;
+
     const handleMouseEnter = () => setIsOpenSelector(true);
     const handleMouseLeave = (e) => {
       if (!menuRef.current.contains(e.relatedTarget)) {
@@ -160,7 +167,7 @@ const LanguageSelector = ({
 
     const addEventListeners = () => {
       // default render is onClick
-      if (lowerCase(render) === "onhover") {
+      if (renderEvent === "onhover") {
         buttonElement?.addEventListener("mouseenter", handleMouseEnter);
         buttonElement?.addEventListener("mouseleave", handleMouseLeave);
         menuRef.current?.addEventListener("mouseleave", handleMouseLeave);
@@ -170,7 +177,7 @@ const LanguageSelector = ({
     };
 
     const removeEventListeners = () => {
-      if (lowerCase(render) === "onhover") {
+      if (renderEvent === "onhover") {
         buttonElement?.removeEventListener("mouseenter", handleMouseEnter);
         buttonElement?.removeEventListener("mouseleave", handleMouseLeave);
         menuRef.current?.removeEventListener("mouseleave", handleMouseLeave);
