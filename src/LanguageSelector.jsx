@@ -105,6 +105,8 @@ const LanguageSelector = ({
   className = "",
   theme = "light",
   defaultToggleBtn = true,
+  toggleBtnIcon = "🌐",
+  searchIcon = "🔍",
   buttonRef = null,
   render = "onClick",
   ...props
@@ -203,30 +205,36 @@ const LanguageSelector = ({
     >
       {defaultToggleBtn && (
         <ToggleButton ref={defaultButtonRef}>
-          <span>🌐</span>
+          <span>{toggleBtnIcon}</span>
           <ButtonSpan>{buttonLabel}</ButtonSpan>
         </ToggleButton>
       )}
       {isOpenSelector && (
-        <DropdownMenu theme={theme}>
+        <DropdownMenu
+          theme={theme}
+          role="listbox"
+          aria-labelledby="language-selector-label"
+        >
           {enableSearch && (
             <SearchContainer>
               <SearchInput
                 type="text"
                 id="search"
                 name="search"
+                aria-label="Search languages"
                 placeholder={placeholder}
                 value={searchValue}
                 onChange={handleSearch}
                 theme={theme}
               />
-              <SearchIcon htmlFor="search">🔍</SearchIcon>
+              <SearchIcon htmlFor="search">{searchIcon}</SearchIcon>
             </SearchContainer>
           )}
-          <LanguageList>
+          <LanguageList role="group">
             {filteredLanguages.length > 0 ? (
               filteredLanguages.map((language) => (
                 <LanguageItem
+                  role="option"
                   key={language[1]}
                   onClick={() => handleLanguageChange(language)}
                   theme={theme}
@@ -269,6 +277,8 @@ LanguageSelector.propTypes = {
   className: propTypes.string,
   theme: propTypes.oneOf(["light", "dark"]),
   defaultToggleBtn: propTypes.bool,
+  toggleBtnIcon: propTypes.oneOfType([propTypes.string, propTypes.node]),
+  searchIcon: propTypes.oneOfType([propTypes.string, propTypes.node]),
   buttonRef: propTypes.shape({ current: propTypes.instanceOf(Element) }),
   render: propTypes.oneOf(["onClick", "onHover"]),
 };

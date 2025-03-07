@@ -143,9 +143,11 @@ Visit the [NPM official package page](https://www.npmjs.com/package/react-langua
 | `notFoundLabel`   | `string`                       | `"Language not found"` | Label for the not found message. When set to an empty string `""` the message will not show up.                              |
 | `className`     | `string`                       | `""`                 | Additional class names for custom styling.                  |
 | `defaultToggleBtn`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden and the user can provide their own custom toggle button.                                    |
+| `toggleBtnIcon`     | `React.ReactNode` / `string` | `"🌐"`            | Customizes the icon displayed on the toggle button. You can use an emoji (e.g., `"🌍"`), a React component (e.g., `<FaGlobe />`), or a custom SVG. |
+| `searchIcon`     | `React.ReactNode` / `string` | `"🔍"`            | Customizes the icon displayed inside the search input. You can use an emoji (e.g., `"🔦"`), a React component (e.g., `<FaSearch />`), or a custom SVG. |
 | `buttonRef`     | `React.RefObject< HTMLButtonElement>` | `null`            | A reference to a custom button that toggles the visibility of the language selector container.                                    |
 | `render`       | `string`:  `"onClick"` / `"onHover"` | `"onClick"` | To render / display the language selector container **onclick** or **onhover** event of the toggle button. |
-| `theme`         | `"light" / "dark"`             | `"light"`            | Theme of the component.                                     |
+| `theme`         | `"light"` / `"dark"`             | `"light"`            | Theme of the component.                                     |
 
 ---
 
@@ -161,6 +163,45 @@ To use the dark theme, simply set the `theme` prop to `"dark"`:
 
 ```jsx
 <LanguageSelector onSelect={handleLanguageSelect} theme="dark" />
+```
+
+### Customizable Icons
+
+You can customize the default toggle button icon and search icon by passing either strings (like emojis) or React nodes (like components from react-icons or custom SVGs).
+
+#### Using Emojis
+
+```jsx
+<LanguageSelector
+  onSelect={handleLanguageSelect}
+  toggleBtnIcon="🌍"
+  searchIcon="🔦"
+/>
+```
+
+#### Using React Components
+
+```jsx
+import { FaGlobe, FaSearch } from "react-icons/fa";
+
+<LanguageSelector
+  onSelect={handleLanguageSelect}
+  toggleBtnIcon={<FaGlobe />}
+  searchIcon={<FaSearch />}
+/>
+```
+
+#### Using Custom SVGs
+
+```jsx
+import GlobeIcon from "./your-path-to-svgs/GlobeIcon.svg";
+import SearchIcon from "./your-path-to-svgs/SearchIcon.svg";
+
+<LanguageSelector
+  onSelect={handleLanguageSelect}
+  toggleBtnIcon={<img src={GlobeIcon} alt="Globe" />}
+  searchIcon={<img src={SearchIcon} alt="Search" />}
+/>
 ```
 
 ---

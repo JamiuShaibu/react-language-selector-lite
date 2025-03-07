@@ -17,6 +17,8 @@ declare module 'react-language-selector-lite' {
     className?: string;
     theme?: 'light' | 'dark';
     defaultToggleBtn?: boolean;
+    toggleBtnIcon?: React.ReactNode | string;
+    searchIcon?: React.ReactNode | string;
     buttonRef?: React.RefObject<HTMLButtonElement>;
     render?: "onClick" | "onHover";
   }
