@@ -141,7 +141,10 @@ Visit the [NPM official package page](https://www.npmjs.com/package/react-langua
 | `buttonLabel`   | `string`                       | `"Select language"`  | Label for the toggle button.                                |
 | `placeholder`   | `string`                       | `"Search language..."` | Placeholder text for the search input.                      |
 | `notFoundLabel`   | `string`                       | `"Language not found"` | Label for the not found message. When set to an empty string `""` the message will not show up.                              |
-| `className`     | `string`                       | `""`                 | Additional class names for custom styling.                  |
+| `width`     | `string`                       | `20rem`                 | Adjust the width of the selector container.                  |
+| `className`     | `string`                       | `""`                 | Custom CSS class for styling the selector container.                  |
+| `toggleBtnClass`     | `string`                       | `""`                 | Custom CSS class for styling the default toggle button.                  |
+| `searchClass`     | `string`                       | `""`                 | Custom CSS class for styling the search input container.                  |
 | `defaultToggleBtn`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden and the user can provide their own custom toggle button.                                    |
 | `toggleBtnIcon`     | `React.ReactNode` / `string` | `"🌐"`            | Customizes the icon displayed on the toggle button. You can use an emoji (e.g., `"🌍"`), a React component (e.g., `<FaGlobe />`), or a custom SVG. |
 | `searchIcon`     | `React.ReactNode` / `string` | `"🔍"`            | Customizes the icon displayed inside the search input. You can use an emoji (e.g., `"🔦"`), a React component (e.g., `<FaSearch />`), or a custom SVG. |
@@ -153,7 +156,7 @@ Visit the [NPM official package page](https://www.npmjs.com/package/react-langua
 
 ### Styling
 
-The component uses styled-components for styling, so there's no need to import an additional CSS file. You can add custom styling by passing a `className` prop to the component.
+The component uses styled-components for styling. You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button and `searchClass` for the search container.
 
 ---
 

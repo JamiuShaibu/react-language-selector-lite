@@ -12,21 +12,17 @@ import styled from "styled-components";
 
 const LanguageSelectorWrapper = styled.div`
   position: relative;
-  width: 100%;
-  ${(props) =>
-    props.geoCoverage === "both"
-      ? "min-width: 11rem; max-width: 32rem;"
-      : "min-width: 6rem; max-width: 25.6rem;"}
-  text-nowrap: nowrap;
+  width: fit-content;
 `;
 
-const ToggleButton = styled.button`
+const ToggleButton = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem;
   cursor: pointer;
   text-decoration: none;
+  width: fit-content;
 `;
 
 const ButtonSpan = styled.span`
@@ -37,13 +33,20 @@ const ButtonSpan = styled.span`
 
 const DropdownMenu = styled.div`
   position: absolute;
-  width: 100%;
+  width: ${(props) => props.width || "20rem"};
+  max-width: 90vw;
+  text-nowrap: nowrap;
   background-color: ${(props) =>
     props.theme === "dark" ? "#1c1e1d" : "#f7f7f7"};
+  color: ${(props) => (props.theme === "dark" ? "#d1d5db" : "#808080")};
   border-radius: 0.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 10;
+
+  @media (max-width: 425px) {
+    width: 16rem;
+  }
 `;
 
 const SearchContainer = styled.div`
@@ -61,6 +64,11 @@ const SearchInput = styled.input`
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 425px) {
+    padding: 0.75rem;
+    padding-right: 2rem;
+  }
 `;
 
 const SearchIcon = styled.label`
@@ -68,12 +76,16 @@ const SearchIcon = styled.label`
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
-  color: #808080;
 `;
 
 const LanguageList = styled.div`
   max-height: 15rem;
   overflow-y: auto;
+  width: 100%;
+
+  @media (max-width: 425px) {
+    right: 0.75rem;
+  }
 `;
 
 const LanguageItem = styled.div`
@@ -83,11 +95,14 @@ const LanguageItem = styled.div`
     background-color: ${(props) =>
       props.theme === "dark" ? "#0f1010" : "#e4e5e5"};
   }
+
+  @media (max-width: 425px) {
+    padding: 0.375rem;
+  }
 `;
 
 const NoLanguageFound = styled.div`
   padding: 0.5rem;
-  color: #808080;
   text-align: center;
 `;
 
@@ -102,9 +117,12 @@ const LanguageSelector = ({
   buttonLabel = "Select language",
   placeholder = "Search language...",
   notFoundLabel = "Language not found",
+  width = "20rem",
   className = "",
   theme = "light",
   defaultToggleBtn = true,
+  toggleBtnClass = "",
+  searchClass = "",
   toggleBtnIcon = "🌐",
   searchIcon = "🔍",
   buttonRef = null,
@@ -197,14 +215,13 @@ const LanguageSelector = ({
   }, [activeButtonRef, render, toggleSelector]);
 
   return (
-    <LanguageSelectorWrapper
-      ref={menuRef}
-      className={className}
-      theme={theme}
-      {...props}
-    >
+    <LanguageSelectorWrapper ref={menuRef} theme={theme} {...props}>
       {defaultToggleBtn && (
-        <ToggleButton ref={defaultButtonRef}>
+        <ToggleButton
+          role="button"
+          ref={defaultButtonRef}
+          className={toggleBtnClass}
+        >
           <span>{toggleBtnIcon}</span>
           <ButtonSpan>{buttonLabel}</ButtonSpan>
         </ToggleButton>
@@ -213,10 +230,12 @@ const LanguageSelector = ({
         <DropdownMenu
           theme={theme}
           role="listbox"
-          aria-labelledby="language-selector-label"
+          className={className}
+          width={width}
+          aria-label="language-selector-label"
         >
           {enableSearch && (
-            <SearchContainer>
+            <SearchContainer className={searchClass}>
               <SearchInput
                 type="text"
                 id="search"
@@ -225,12 +244,13 @@ const LanguageSelector = ({
                 placeholder={placeholder}
                 value={searchValue}
                 onChange={handleSearch}
+                className={searchClass}
                 theme={theme}
               />
               <SearchIcon htmlFor="search">{searchIcon}</SearchIcon>
             </SearchContainer>
           )}
-          <LanguageList role="group">
+          <LanguageList className={className}>
             {filteredLanguages.length > 0 ? (
               filteredLanguages.map((language) => (
                 <LanguageItem
@@ -275,6 +295,9 @@ LanguageSelector.propTypes = {
   notFoundLabel: propTypes.string,
   placeholder: propTypes.string,
   className: propTypes.string,
+  width: propTypes.string,
+  toggleBtnClass: propTypes.string,
+  searchClass: propTypes.string,
   theme: propTypes.oneOf(["light", "dark"]),
   defaultToggleBtn: propTypes.bool,
   toggleBtnIcon: propTypes.oneOfType([propTypes.string, propTypes.node]),

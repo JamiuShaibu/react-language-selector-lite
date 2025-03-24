@@ -1,7 +1,7 @@
 {
   "name": "react-language-selector-lite",
-  "version": "1.4.3",
-  "description": "A lightweight language selector for React applications",
+  "version": "1.4.41",
+  "description": "A lightweight language selector for React applications.",
   "main": "dist/LanguageSelector.js",
   "types": "src/index.d.ts",
   "scripts": {
