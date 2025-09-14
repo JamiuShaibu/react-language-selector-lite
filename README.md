@@ -167,6 +167,21 @@ To use the dark theme, simply set the `theme` prop to `"dark"`:
 <LanguageSelector onSelect={handleLanguageSelect} theme="dark" />
 ```
 
+#### Advanced Theme Customization
+
+You can take the theme to another level beyond the simple default theme, in this case your main focus should be on 3 key classes, `className`, `searchClass`, and `optionClass`. The following example shows how to customize the dark theme using Tailwind CSS:
+
+```jsx
+<LanguageSelector
+  onSelect={handleLanguageSelect}
+  // Main classes for theming
+  className="dark:bg-[#0b191c]"
+  searchClass="dark:bg-gray-800"
+  optionClass="dark:hover:bg-[#222729] dark:text-gray-400 dark:hover:text-white"
+/>
+
+```
+
 ### Customizable Icons
 
 You can customize the default toggle button icon and search icon by passing either strings (like emojis) or React nodes (like components from react-icons or custom SVGs).
