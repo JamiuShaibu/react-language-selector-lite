@@ -18,7 +18,6 @@ const LanguageSelectorWrapper = styled.div`
 const ToggleButton = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.25rem;
   padding: 0.5rem;
   cursor: pointer;
   text-decoration: none;
@@ -26,6 +25,7 @@ const ToggleButton = styled.div`
 `;
 
 const ButtonSpan = styled.span`
+  padding-left: 0.25rem;
   &:hover {
     text-decoration: underline;
   }
@@ -120,9 +120,9 @@ const LanguageSelector = ({
   width = "20rem",
   className = "",
   theme = "light",
-  defaultToggleBtn = true,
   toggleBtnClass = "",
   searchClass = "",
+  optionClass = "",
   toggleBtnIcon = "🌐",
   searchIcon = "🔍",
   buttonRef = null,
@@ -135,9 +135,7 @@ const LanguageSelector = ({
     allLanguages = options.map((code) => langs.where("1", code.toLowerCase()));
   }
 
-  const [isOpenSelector, setIsOpenSelector] = useState(
-    defaultToggleBtn ? false : true
-  );
+  const [isOpenSelector, setIsOpenSelector] = useState(false);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -166,8 +164,7 @@ const LanguageSelector = ({
   }, []);
 
   const defaultButtonRef = useRef(null);
-  const activeButtonRef =
-    !defaultToggleBtn && buttonRef ? buttonRef : defaultButtonRef;
+  const activeButtonRef = buttonRef ? buttonRef : defaultButtonRef;
 
   useEffect(() => {
     const event = lowerCase(render);
@@ -216,22 +213,22 @@ const LanguageSelector = ({
 
   return (
     <LanguageSelectorWrapper ref={menuRef} theme={theme} {...props}>
-      {defaultToggleBtn && (
+      {!buttonRef && (
         <ToggleButton
           role="button"
           ref={defaultButtonRef}
           className={toggleBtnClass}
         >
           <span>{toggleBtnIcon}</span>
-          <ButtonSpan>{buttonLabel}</ButtonSpan>
+          {buttonLabel && <ButtonSpan>{buttonLabel}</ButtonSpan>}
         </ToggleButton>
       )}
       {isOpenSelector && (
         <DropdownMenu
           theme={theme}
           role="listbox"
-          className={className}
           width={width}
+          className={className}
           aria-label="language-selector-label"
         >
           {enableSearch && (
@@ -254,6 +251,7 @@ const LanguageSelector = ({
             {filteredLanguages.length > 0 ? (
               filteredLanguages.map((language) => (
                 <LanguageItem
+                  className={optionClass}
                   role="option"
                   key={language[1]}
                   onClick={() => handleLanguageChange(language)}
@@ -261,14 +259,11 @@ const LanguageSelector = ({
                 >
                   {lowerCase(geoCoverage) === "local" && language.local}
                   {lowerCase(geoCoverage) === "international" && language.name}
-                  {lowerCase(geoCoverage) === "both" && !reverseNames && (
+                  {lowerCase(geoCoverage) === "both" && (
                     <span>
-                      {language.local} ({language.name})
-                    </span>
-                  )}
-                  {lowerCase(geoCoverage) === "both" && reverseNames && (
-                    <span>
-                      {language.name} ({language.local})
+                      {!reverseNames
+                        ? `${language.local} (${language.name})`
+                        : `${language.name} (${language.local})`}
                     </span>
                   )}
                 </LanguageItem>
@@ -297,9 +292,9 @@ LanguageSelector.propTypes = {
   className: propTypes.string,
   width: propTypes.string,
   toggleBtnClass: propTypes.string,
+  optionClass: propTypes.string,
   searchClass: propTypes.string,
   theme: propTypes.oneOf(["light", "dark"]),
-  defaultToggleBtn: propTypes.bool,
   toggleBtnIcon: propTypes.oneOfType([propTypes.string, propTypes.node]),
   searchIcon: propTypes.oneOfType([propTypes.string, propTypes.node]),
   buttonRef: propTypes.shape({ current: propTypes.instanceOf(Element) }),

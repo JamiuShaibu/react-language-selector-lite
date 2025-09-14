@@ -76,7 +76,7 @@ export default App;
 
 ### Using custom toggle button
 
-You can use your own custom toggle button by passing `defaultToggleBtn` prop as `false` and rendering the select container with reference to your custom button. Here's an example: **Easy peasy!**
+You can use your own custom toggle button for rendering the select container. Just pass your custom button reference to the `buttonRef` prop. This will override the default toggle button. Here's an example: **Easy peasy!**
 
 ```jsx
 import React, { useRef } from 'react';
@@ -100,7 +100,6 @@ const App = () => {
         onSelect={(value) => handleLanguageSelect(value)}
         theme="dark"
         includeDetails={true}
-        defaultToggleBtn={false}
         buttonRef={customButtonRef}
       />
     </div>
@@ -145,10 +144,10 @@ Visit the [NPM official package page](https://www.npmjs.com/package/react-langua
 | `className`     | `string`                       | `""`                 | Custom CSS class for styling the selector container.                  |
 | `toggleBtnClass`     | `string`                       | `""`                 | Custom CSS class for styling the default toggle button.                  |
 | `searchClass`     | `string`                       | `""`                 | Custom CSS class for styling the search input container.                  |
-| `defaultToggleBtn`         | `boolean`             | `true`            | When set to `false`, the default toggle button will be hidden and the user can provide their own custom toggle button.                                    |
+| `optionClass`     | `string`                       | `""`                 | Custom CSS class for styling each option.                  |
 | `toggleBtnIcon`     | `React.ReactNode` / `string` | `"🌐"`            | Customizes the icon displayed on the toggle button. You can use an emoji (e.g., `"🌍"`), a React component (e.g., `<FaGlobe />`), or a custom SVG. |
 | `searchIcon`     | `React.ReactNode` / `string` | `"🔍"`            | Customizes the icon displayed inside the search input. You can use an emoji (e.g., `"🔦"`), a React component (e.g., `<FaSearch />`), or a custom SVG. |
-| `buttonRef`     | `React.RefObject< HTMLButtonElement>` | `null`            | A reference to a custom button that toggles the visibility of the language selector container.                                    |
+| `buttonRef`     | `React.RefObject< HTMLButtonElement>` | `null`            | A reference to a custom button that toggles the visibility of the language selector container, if not provided, the default toggle button will be rendered.                                    |
 | `render`       | `string`:  `"onClick"` / `"onHover"` | `"onClick"` | To render / display the language selector container **onclick** or **onhover** event of the toggle button. |
 | `theme`         | `"light"` / `"dark"`             | `"light"`            | Theme of the component.                                     |
 
@@ -156,7 +155,7 @@ Visit the [NPM official package page](https://www.npmjs.com/package/react-langua
 
 ### Styling
 
-The component uses styled-components for styling. You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button and `searchClass` for the search container.
+ You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button, `searchClass` for the search container, and `optionClass` for each option. Supports both traditional CSS classes and utility classes from UI libraries like Tailwind CSS, Bootstrap, etc. (e.g., `toggleBtnClass="bg-sky-600 rounded-full"`).
 
 ---
 
