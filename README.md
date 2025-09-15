@@ -138,7 +138,7 @@ You can limit the available options by passing an array of language codes to the
 
 ---
 
-### ⚙️ Props Reference
+## ⚙️ Props Reference
 
 | Prop Name       | Type                           | Default Value        | Description                                                 |
 |-----------------|--------------------------------|----------------------|-------------------------------------------------------------|
@@ -165,7 +165,7 @@ You can limit the available options by passing an array of language codes to the
 
 ---
 
-## 🎨 Styling
+## 🎨 Styling / Customization
 
  You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button, `searchClass` for the search container, and `optionClass` for each option. Supports both traditional CSS classes and utility classes from UI libraries like Tailwind CSS, Bootstrap, etc. (e.g., `toggleBtnClass="bg-sky-600 rounded-full"`).
 
