@@ -4,15 +4,19 @@
 
 ---
 
-## Features
+## ✨ Features
 
-- Select from a comprehensive list of over 184 languages.
-- Search functionality to quickly find languages.
-- Supports light and dark themes.
-- Fully customizable labels and placeholders.
-- Option to include detailed language information.
-- Flexible sorting and filtering of languages.
-- Licensed under MIT.
+- 🗂️ Select from a comprehensive list of over 184 languages
+- 🔍 Search functionality to quickly find languages
+- 🌗 Supports light and dark themes
+- 🎨 Fully customizable labels and placeholders
+- 🌍 Supports ISO 639 macrolanguages
+- 📋 Option to include detailed language information
+- 🔄 Flexible sorting and filtering of languages
+- 📦 Lightweight and easy to integrate
+- 📱 Responsive design
+- 🎯 TypeScript support
+- 📜 Licensed under MIT
 
 ---
 
@@ -24,7 +28,7 @@ For more information about ISO 639 macrolanguage, visit the [Wikipedia page](htt
 
 ---
 
-## Installation
+## 📦 Installation
 
 Install the package via npm or yarn:
 
@@ -40,9 +44,9 @@ yarn add react-language-selector-lite
 
 ---
 
-## Usage
+## 🚀 Quick Start
 
-### Basic Example
+### Basic Usage
 
 ```jsx
 import React from 'react';
@@ -51,9 +55,9 @@ import LanguageSelector from 'react-language-selector-lite';
 const App = () => {
   const handleLanguageSelect = (language) => {
     console.log('Selected language:', language);
-    // Will return the code of the selected language. e.g. 'es'
+    // Returns the code of the selected language. (e.g., 'es')
 
-    // You can also access the language details by passing `includeDetails` prop as true. e.g.
+    // To access language details, pass prop `includeDetails={true}`. Will return:
     // {1: 'es', 2: 'spa', 3: 'spa', name: 'Spanish', local: 'Español', 2T: 'spa', 2B: 'spa'}
   };
 
@@ -73,6 +77,8 @@ export default App;
   <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="Language Selector Example" width="300" />
   <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite.gif" alt="Language Selector Gif Example" width="300" />
 </div>
+
+## 🎨 Advanced Usage
 
 ### Using custom toggle button
 
@@ -122,11 +128,17 @@ You can limit the available options by passing an array of language codes to the
 />
 ```
 
-### NPM official package
+---
 
-Visit the [NPM official package page](https://www.npmjs.com/package/react-language-selector-lite?activeTab=readme) for more information.
+### 🔗 Useful Links
 
-### Props
+- [NPM Official Package Page](https://www.npmjs.com/package/react-language-selector-lite?activeTab=readme) -  For more information
+
+- [Issue Tracker](https://github.com/JamiuShaibu/react-language-selector-lite/issues) - Report any issues or feature requests
+
+---
+
+### ⚙️ Props Reference
 
 | Prop Name       | Type                           | Default Value        | Description                                                 |
 |-----------------|--------------------------------|----------------------|-------------------------------------------------------------|
@@ -153,7 +165,7 @@ Visit the [NPM official package page](https://www.npmjs.com/package/react-langua
 
 ---
 
-### Styling
+## 🎨 Styling
 
  You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button, `searchClass` for the search container, and `optionClass` for each option. Supports both traditional CSS classes and utility classes from UI libraries like Tailwind CSS, Bootstrap, etc. (e.g., `toggleBtnClass="bg-sky-600 rounded-full"`).
 
@@ -167,7 +179,7 @@ To use the dark theme, simply set the `theme` prop to `"dark"`:
 <LanguageSelector onSelect={handleLanguageSelect} theme="dark" />
 ```
 
-#### Advanced Theme Customization
+### Advanced Theme Customization
 
 You can take the theme to another level beyond the simple default theme, in this case your main focus should be on 3 key classes, `className`, `searchClass`, and `optionClass`. The following example shows how to customize the dark theme using Tailwind CSS:
 
@@ -223,13 +235,13 @@ import SearchIcon from "./your-path-to-svgs/SearchIcon.svg";
 
 ---
 
-## License
+## 📄 License
 
 This project is licensed under the [MIT License](LICENSE) by [Jamiu Shaibu](https://github.com/JamiuShaibu)
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for review.
 
@@ -251,24 +263,22 @@ If you encounter any issues or have suggestions, feel free to open an issue on G
 
 ### Acknowledgments
 
-- [langs](https://www.npmjs.com/package/langs): Used for fetching language details.
+- [langs](https://www.npmjs.com/package/langs) - For language data.
 
 ---
 
-### Thank You
+### ☕ Support the Developer
 
-Thank you for using **react-language-selector-lite**! Your support is greatly appreciated.
-
----
-
-### Buy Me a Coffee
-
-If you found this package useful, please consider buying me a coffee.
+If you find this package useful, consider buying me a coffee to support development!
 
 <a href="https://www.buymeacoffee.com/jamiushaib5" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 ---
 
-### Author
+### 👨‍💻 Author
 
-- **<NAME>** - [Jamiu Shaibu](https://github.com/JamiuShaibu)
+- **Jamiu Shaibu** - [GitHub](https://github.com/JamiuShaibu) | [LinkedIn](https://www.linkedin.com/in/jamiu-shaibu-9037ba195/)
+
+---
+
+Happy coding! 🎉
