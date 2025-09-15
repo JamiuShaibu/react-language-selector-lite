@@ -255,9 +255,12 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 ---
 
-## Support
+### 💬 Support
 
-If you encounter any issues or have suggestions, feel free to open an issue on GitHub or contact us directly.
+If you encounter any issues or have questions:
+
+- Check the [existing issues](https://github.com/JamiuShaibu/react-language-selector-lite/issues)
+- Create a [new issue](https://github.com/JamiuShaibu/react-language-selector-lite/issues/new)
 
 ---
 
