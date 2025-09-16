@@ -46,7 +46,7 @@ yarn add react-language-selector-lite
 
 ## 🚀 Quick Start
 
-### Basic Usage
+### Basic Usage | [Props Table](#props-table)
 
 ```jsx
 import React from 'react';
@@ -71,7 +71,7 @@ const App = () => {
 export default App;
 ```
 
-### Preview in Action:
+### Preview in Action
 
 <div style="display: flex; align-items: center; gap: 10px;">
   <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="Language Selector Example" width="300" />
@@ -103,7 +103,7 @@ const App = () => {
         <RiTranslateAi2 className="size-6" />
       </button>
       <LanguageSelector
-        onSelect={(value) => handleLanguageSelect(value)}
+        onSelect={handleLanguageSelect}
         theme="dark"
         includeDetails={true}
         buttonRef={customButtonRef}
@@ -128,6 +128,19 @@ You can limit the available options by passing an array of language codes to the
 />
 ```
 
+### `useSate` Hook
+
+Using the `useState` hook to select a language:
+
+```jsx
+import React, { useState } from 'react';
+const [selectedLanguage, setSelectedLanguage] = useState(null);
+
+<LanguageSelector
+  onSelect={(lang) => setSelectedLanguage(lang)}
+/>
+```
+
 ---
 
 ### 🔗 Useful Links
@@ -138,18 +151,21 @@ You can limit the available options by passing an array of language codes to the
 
 ---
 
+<div id="props-table"></div>
+
 ## ⚙️ Props Reference
 
 | Prop Name       | Type                           | Default Value        | Description                                                 |
 |-----------------|--------------------------------|----------------------|-------------------------------------------------------------|
 | `onSelect`      | `(language: any) => void`      | **Required**         | Callback function triggered when a language is selected.    |
+| `defaultLang`   | `string`                       | `""`                 | Default language code to pre-select.                        |
 | `includeDetails`| `boolean`                      | `false`              | Whether to include detailed language info in `onSelect`.    |
 | `geoCoverage`   | `string`: `"local"`/ `"international"`/ `"both"`       | `"both"`             | Display local names or international names of languages.    |
 | `reverseNames`    | `boolean`                      | `false`              | Reverse the order of the language names when `geoCoverage` is set to `both`.                     |
 | `enableSearch`  | `boolean`                      | `true`               | Enable search functionality.                                |
 | `options`       | `string[]`                     | `[]`                 | Array of language codes to limit available options.         |
 | `sortOptions`   | `boolean`                      | `true`               | Whether to sort the list of languages alphabetically.       |
-| `buttonLabel`   | `string`                       | `"Select language"`  | Label for the toggle button.                                |
+| `buttonLabel`   | `string`: `"local"`/ `"international"`/ `"both"`                       | `"Select language"`  | Label for the toggle button, if set to `"local"`/ `"international"`/ `"both"`, the label will be dynamic based on the selected language, you can also set it to a custom label. When set to an empty string `""` the label will not show up.                                |
 | `placeholder`   | `string`                       | `"Search language..."` | Placeholder text for the search input.                      |
 | `notFoundLabel`   | `string`                       | `"Language not found"` | Label for the not found message. When set to an empty string `""` the message will not show up.                              |
 | `width`     | `string`                       | `20rem`                 | Adjust the width of the selector container.                  |
@@ -170,6 +186,17 @@ You can limit the available options by passing an array of language codes to the
  You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button, `searchClass` for the search container, and `optionClass` for each option. Supports both traditional CSS classes and utility classes from UI libraries like Tailwind CSS, Bootstrap, etc. (e.g., `toggleBtnClass="bg-sky-600 rounded-full"`).
 
 ---
+
+### Default Toggle Button Label
+
+You can dynamically label the `buttonLabel` based on the selected language by setting the prop to `"local"`, `"international"` or `"both"`. Alternatively, you can provide a custom string for a personalized label. Setting it to an empty string `""` will hide the label.
+
+```jsx
+<LanguageSelector
+  onSelect={handleLanguageSelect}
+  buttonLabel="local" // "international", "both", a custom string or an empty string ""
+/>
+```
 
 ### Dark Theme
 

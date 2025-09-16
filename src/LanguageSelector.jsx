@@ -108,6 +108,7 @@ const NoLanguageFound = styled.div`
 
 const LanguageSelector = ({
   onSelect,
+  defaultLang = "",
   includeDetails = false,
   geoCoverage = "both",
   reverseNames = false,
@@ -129,22 +130,38 @@ const LanguageSelector = ({
   render = "onClick",
   ...props
 }) => {
+  const [isOpenSelector, setIsOpenSelector] = useState(false);
+  const [isSelect, setIsSelect] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [storedLang, setStoredLang] = useState(() => {
+    const storedValue = localStorage.getItem("lite-lang");
+    if (storedValue) {
+      return JSON.parse(storedValue);
+    }
+    return defaultLang ? langs.where("1", defaultLang.toLowerCase()) : null;
+  });
+
+  useEffect(() => {
+    if (!isSelect && storedLang) {
+      onSelect(includeDetails ? storedLang : storedLang[1]);
+    }
+  }, [storedLang, isSelect, includeDetails]);
+
   let allLanguages = langs.all();
   if (options.length > 0) {
     sortOptions && options.sort((a, b) => a.localeCompare(b));
     allLanguages = options.map((code) => langs.where("1", code.toLowerCase()));
   }
 
-  const [isOpenSelector, setIsOpenSelector] = useState(false);
-
-  const [searchValue, setSearchValue] = useState("");
-
   const menuRef = useRef(null);
   useDropdownClickOutside(menuRef, () => setIsOpenSelector(false));
 
   const handleLanguageChange = (value) => {
-    includeDetails ? onSelect(value) : onSelect(value[1]);
+    localStorage.setItem("lite-lang", JSON.stringify(value));
+    setStoredLang(value);
+    onSelect(includeDetails ? value : value[1]);
     setIsOpenSelector(!isOpenSelector);
+    setIsSelect(true);
   };
 
   const handleSearch = (e) => {
@@ -220,7 +237,25 @@ const LanguageSelector = ({
           className={toggleBtnClass}
         >
           <span>{toggleBtnIcon}</span>
-          {buttonLabel && <ButtonSpan>{buttonLabel}</ButtonSpan>}
+          {buttonLabel && (
+            <ButtonSpan>
+              {!storedLang
+                ? ["both", "local", "international"].includes(
+                    buttonLabel.toLowerCase()
+                  )
+                  ? "Select language"
+                  : buttonLabel
+                : buttonLabel.toLowerCase() === "both"
+                ? reverseNames
+                  ? `${storedLang.name} (${storedLang.local})`
+                  : `${storedLang.local} (${storedLang.name})`
+                : buttonLabel.toLowerCase() === "local"
+                ? storedLang.local
+                : buttonLabel.toLowerCase() === "international"
+                ? storedLang.name
+                : buttonLabel}
+            </ButtonSpan>
+          )}
         </ToggleButton>
       )}
       {isOpenSelector && (
@@ -280,6 +315,7 @@ const LanguageSelector = ({
 
 LanguageSelector.propTypes = {
   onSelect: propTypes.func.isRequired,
+  defaultLang: propTypes.string,
   includeDetails: propTypes.bool,
   enableSearch: propTypes.bool,
   options: propTypes.arrayOf(propTypes.string),
