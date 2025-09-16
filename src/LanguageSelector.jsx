@@ -108,7 +108,7 @@ const NoLanguageFound = styled.div`
 
 const LanguageSelector = ({
   onSelect,
-  defaultLang = "",
+  defaultLang = "browser",
   includeDetails = false,
   geoCoverage = "both",
   reverseNames = false,
@@ -134,11 +134,17 @@ const LanguageSelector = ({
   const [isSelect, setIsSelect] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [storedLang, setStoredLang] = useState(() => {
-    const storedValue = localStorage.getItem("lite-lang");
-    if (storedValue) {
-      return JSON.parse(storedValue);
-    }
-    return defaultLang ? langs.where("1", defaultLang.toLowerCase()) : null;
+    const stored = localStorage.getItem("lite-lang");
+    if (stored) return JSON.parse(stored);
+
+    if (!defaultLang) return null;
+
+    const langCode =
+      defaultLang === "browser"
+        ? navigator.language.split("-")[0]
+        : defaultLang;
+
+    return langs.where("1", langCode.toLowerCase());
   });
 
   useEffect(() => {
@@ -315,7 +321,11 @@ const LanguageSelector = ({
 
 LanguageSelector.propTypes = {
   onSelect: propTypes.func.isRequired,
-  defaultLang: propTypes.string,
+  defaultLang: propTypes.oneOfType([
+    propTypes.string,
+    propTypes.oneOf(["browser"]),
+    propTypes.oneOf([null]),
+  ]),
   includeDetails: propTypes.bool,
   enableSearch: propTypes.bool,
   options: propTypes.arrayOf(propTypes.string),

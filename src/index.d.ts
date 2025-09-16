@@ -5,7 +5,7 @@ declare module 'react-language-selector-lite' {
 
   export interface LanguageSelectorProps {
     onSelect: (language: any) => void;
-    defaultLang?: string;
+    defaultLang?: string | 'browser' | null;
     includeDetails?: boolean;
     enableSearch?: boolean;
     options?: string[];

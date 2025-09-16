@@ -158,14 +158,14 @@ const [selectedLanguage, setSelectedLanguage] = useState(null);
 | Prop Name       | Type                           | Default Value        | Description                                                 |
 |-----------------|--------------------------------|----------------------|-------------------------------------------------------------|
 | `onSelect`      | `(language: any) => void`      | **Required**         | Callback function triggered when a language is selected.    |
-| `defaultLang`   | `string`                       | `""`                 | Default language code to pre-select.                        |
+| `defaultLang`   | `string` / `null`                       | `"browser"`                 | Default language code to pre-select. Set preferred language code (e.g., `"en"`) to override the browser's default language. Set to`null` to disable pre-selection. |
 | `includeDetails`| `boolean`                      | `false`              | Whether to include detailed language info in `onSelect`.    |
-| `geoCoverage`   | `string`: `"local"`/ `"international"`/ `"both"`       | `"both"`             | Display local names or international names of languages.    |
+| `geoCoverage`   | `string`: `"local"` / `"international"` / `"both"`       | `"both"`             | Display local names or international names of languages.    |
 | `reverseNames`    | `boolean`                      | `false`              | Reverse the order of the language names when `geoCoverage` is set to `both`.                     |
 | `enableSearch`  | `boolean`                      | `true`               | Enable search functionality.                                |
 | `options`       | `string[]`                     | `[]`                 | Array of language codes to limit available options.         |
 | `sortOptions`   | `boolean`                      | `true`               | Whether to sort the list of languages alphabetically.       |
-| `buttonLabel`   | `string`: `"local"`/ `"international"`/ `"both"`                       | `"Select language"`  | Label for the toggle button, if set to `"local"`/ `"international"`/ `"both"`, the label will be dynamic based on the selected language, you can also set it to a custom label. When set to an empty string `""` the label will not show up.                                |
+| `buttonLabel`   | `string`: `"local"` / `"international"` / `"both"`                       | `"Select language"`  | Label for the toggle button, if set to `"local"` / `"international"` / `"both"`, the label will be dynamic based on the selected language, you can also set it to a custom label. When set to an empty string `""` the label will not show up.                                |
 | `placeholder`   | `string`                       | `"Search language..."` | Placeholder text for the search input.                      |
 | `notFoundLabel`   | `string`                       | `"Language not found"` | Label for the not found message. When set to an empty string `""` the message will not show up.                              |
 | `width`     | `string`                       | `20rem`                 | Adjust the width of the selector container.                  |
