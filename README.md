@@ -259,6 +259,8 @@ import SearchIcon from "./your-path-to-svgs/SearchIcon.svg";
 />
 ```
 
+#### Fully Customized Preview
+
 <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-theme-dark-light.png" alt="react-language-selector-lite-theme-dark-light" width="auto" />
 
 ---
@@ -304,6 +306,7 @@ If you find this package useful:
 
  1. Star⭐️ the repository on [GitHub](https://github.com/JamiuShaibu/react-language-selector-lite) and share it with other developers!
  2. Consider buying me a coffee to support development!
+
 <a href="https://www.buymeacoffee.com/jamiushaib5" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 ---
