@@ -1,6 +1,6 @@
 # react-language-selector-lite
 
-**react-language-selector-lite** is a lightweight and customizable React component for selecting languages, featuring ISO 639 macrolanguage support, and TypeScript compatibility. It offers search functionality, themes (light and dark), and flexible configurations. This package is built using styled-components for seamless integration into any React project. 🚀
+**react-language-selector-lite** is a lightweight and customizable React component for selecting languages, featuring ISO 639 macrolanguage support, and TypeScript compatibility. It offers search functionality, themes (light and dark), and flexible configurations. This package is built using styled-components for seamless integration into any React project🚀.
 
 ---
 
@@ -9,7 +9,7 @@
 - 🗂️ Select from a comprehensive list of over 184 languages
 - 🔍 Search functionality to quickly find languages
 - 🌗 Supports light and dark themes
-- 🎨 Fully customizable labels and placeholders
+- 🎨 Fully customizable labels, placeholders & appearance
 - 🌍 Supports ISO 639 macrolanguages
 - 📋 Option to include detailed language information
 - 🔄 Flexible sorting and filtering of languages
@@ -74,8 +74,8 @@ export default App;
 ### Preview in Action
 
 <div style="display: flex; align-items: center; gap: 10px;">
-  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="Language Selector Example" width="300" />
-  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite.gif" alt="Language Selector Gif Example" width="300" />
+  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-Img.png" alt="react-language-selector-lite-theme-light" width="300" />
+  <img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite.gif" alt="React Language Selector Lite Gif Example" width="300" />
 </div>
 
 ## 🎨 Advanced Usage
@@ -115,7 +115,7 @@ const App = () => {
 export default App;
 ```
 
-<img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-darkImg.png" alt="language selector dark theme" width="300" />
+<img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-darkImg.png" alt="react-language-selector-lite-theme-dark" width="300" />
 
 ### Limiting Language Options
 
@@ -168,7 +168,7 @@ const [selectedLanguage, setSelectedLanguage] = useState(null);
 | `buttonLabel`   | `string`: `"local"` / `"international"` / `"both"`                       | `"Select language"`  | Label for the toggle button, if set to `"local"` / `"international"` / `"both"`, the label will be dynamic based on the selected language, you can also set it to a custom label. When set to an empty string `""` the label will not show up.                                |
 | `placeholder`   | `string`                       | `"Search language..."` | Placeholder text for the search input.                      |
 | `notFoundLabel`   | `string`                       | `"Language not found"` | Label for the not found message. When set to an empty string `""` the message will not show up.                              |
-| `width`     | `string`                       | `20rem`                 | Adjust the width of the selector container.                  |
+| `width`     | `string`                       | `"20rem"`                 | Adjust the width of the selector container.                  |
 | `className`     | `string`                       | `""`                 | Custom CSS class for styling the selector container.                  |
 | `toggleBtnClass`     | `string`                       | `""`                 | Custom CSS class for styling the default toggle button.                  |
 | `searchClass`     | `string`                       | `""`                 | Custom CSS class for styling the search input container.                  |
@@ -183,7 +183,7 @@ const [selectedLanguage, setSelectedLanguage] = useState(null);
 
 ## 🎨 Styling / Customization
 
- You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button, `searchClass` for the search container, and `optionClass` for each option. Supports both traditional CSS classes and utility classes from UI libraries like Tailwind CSS, Bootstrap, etc. (e.g., `toggleBtnClass="bg-sky-600 rounded-full"`).
+You can add custom styling by utilizing the following props; `className` for the selector container, `toggleBtnClass` for the default toggle button, `searchClass` for the search container, and `optionClass` for each option. Supports both traditional CSS classes and utility classes from UI libraries like Tailwind CSS, Bootstrap, etc. (e.g., `toggleBtnClass="bg-sky-600 rounded-full"`).
 
 ---
 
@@ -206,7 +206,7 @@ To use the dark theme, simply set the `theme` prop to `"dark"`:
 <LanguageSelector onSelect={handleLanguageSelect} theme="dark" />
 ```
 
-### Advanced Theme Customization
+### Advanced Theming
 
 You can take the theme to another level beyond the simple default theme, in this case your main focus should be on 3 key classes, `className`, `searchClass`, and `optionClass`. The following example shows how to customize the dark theme using Tailwind CSS:
 
@@ -218,7 +218,6 @@ You can take the theme to another level beyond the simple default theme, in this
   searchClass="dark:bg-gray-800"
   optionClass="dark:hover:bg-[#222729] dark:text-gray-400 dark:hover:text-white"
 />
-
 ```
 
 ### Customizable Icons
@@ -260,6 +259,8 @@ import SearchIcon from "./your-path-to-svgs/SearchIcon.svg";
 />
 ```
 
+<img src="https://raw.githubusercontent.com/JamiuShaibu/react-language-selector-lite/refs/heads/main/src/images/npm-install-react-language-selector-lite-theme-dark-light.png" alt="react-language-selector-lite-theme-dark-light" width="auto" />
+
 ---
 
 ## 📄 License
@@ -299,8 +300,10 @@ If you encounter any issues or have questions:
 
 ### ☕ Support the Developer
 
-If you find this package useful, consider buying me a coffee to support development!
+If you find this package useful:
 
+ 1. Star⭐️ the repository on [GitHub](https://github.com/JamiuShaibu/react-language-selector-lite) and share it with other developers!
+ 2. Consider buying me a coffee to support development!
 <a href="https://www.buymeacoffee.com/jamiushaib5" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 ---
