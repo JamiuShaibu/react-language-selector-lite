@@ -122,6 +122,7 @@ const LanguageSelector = ({
   className = "",
   theme = "light",
   toggleBtnClass = "",
+  btnLabelClass = "",
   searchClass = "",
   optionClass = "",
   toggleBtnIcon = "🌐",
@@ -245,7 +246,7 @@ const LanguageSelector = ({
         >
           <span>{toggleBtnIcon}</span>
           {buttonLabel && (
-            <ButtonSpan>
+            <ButtonSpan className={btnLabelClass}>
               {!storedLang
                 ? ["both", "local", "international"].includes(
                     buttonLabel.toLowerCase()
@@ -341,6 +342,7 @@ LanguageSelector.propTypes = {
   className: propTypes.string,
   width: propTypes.string,
   toggleBtnClass: propTypes.string,
+  btnLabelClass: propTypes.string,
   optionClass: propTypes.string,
   searchClass: propTypes.string,
   theme: propTypes.oneOf(["light", "dark"]),

@@ -18,6 +18,7 @@ declare module 'react-language-selector-lite' {
     className?: string;
     width?: string;
     toggleBtnClass?: string;
+    btnLabelClass?: string;
     searchClass?: string;
     optionClass?: string;
     theme?: 'light' | 'dark';

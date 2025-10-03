@@ -171,6 +171,7 @@ const [selectedLanguage, setSelectedLanguage] = useState(null);
 | `width`     | `string`                       | `"20rem"`                 | Adjust the width of the selector container.                  |
 | `className`     | `string`                       | `""`                 | Custom CSS class for styling the selector container.                  |
 | `toggleBtnClass`     | `string`                       | `""`                 | Custom CSS class for styling the default toggle button.                  |
+| `btnLabelClass`     | `string`                       | `""`                 | Custom CSS class for styling the label of the toggle button.                  |
 | `searchClass`     | `string`                       | `""`                 | Custom CSS class for styling the search input container.                  |
 | `optionClass`     | `string`                       | `""`                 | Custom CSS class for styling each option.                  |
 | `toggleBtnIcon`     | `React.ReactNode` / `string` | `"🌐"`            | Customizes the icon displayed on the toggle button. You can use an emoji (e.g., `"🌍"`), a React component (e.g., `<FaGlobe />`), or a custom SVG. |
