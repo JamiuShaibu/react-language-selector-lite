@@ -241,6 +241,7 @@ const LanguageSelector = ({
           role="button"
           ref={defaultButtonRef}
           className={toggleBtnClass}
+          aria-label="language-selector-toggle-button"
         >
           <span>{toggleBtnIcon}</span>
           {buttonLabel && (
@@ -270,7 +271,7 @@ const LanguageSelector = ({
           role="listbox"
           width={width}
           className={className}
-          aria-label="language-selector-label"
+          aria-label="language-selector-dropdown-menu"
         >
           {enableSearch && (
             <SearchContainer className={searchClass}>
@@ -278,14 +279,16 @@ const LanguageSelector = ({
                 type="text"
                 id="search"
                 name="search"
-                aria-label="Search languages"
+                aria-label="search-languages-input"
                 placeholder={placeholder}
                 value={searchValue}
                 onChange={handleSearch}
                 className={searchClass}
                 theme={theme}
               />
-              <SearchIcon htmlFor="search">{searchIcon}</SearchIcon>
+              <SearchIcon htmlFor="search" aria-label="search-languages-icon">
+                {searchIcon}
+              </SearchIcon>
             </SearchContainer>
           )}
           <LanguageList className={className}>
